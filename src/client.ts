@@ -184,7 +184,7 @@ export class BlossomClient {
         let contentLength = 0;
         let contentType = "";
 
-        if (file instanceof Buffer) {
+        if (file! instanceof Blob) {
             file = new Blob([file]);
         }
         contentLength = file.size;
