@@ -183,13 +183,12 @@ export class BlossomClient {
         const sha256 = await BlossomClient.getFileSha256(file);
         let contentLength = 0;
         let contentType = "";
-        let ffile = file;
 
-        if (file! instanceof Blob) {
-            ffile = new Blob([file]);
+        if (file instanceof Buffer) {
+            file = new Blob([file]);
         }
-        contentLength = ffile.size;
-        contentType = ffile.type;
+        contentLength = file.size;
+        contentType = file.type;
 
         const headers = new Headers();
         if (auth) {
